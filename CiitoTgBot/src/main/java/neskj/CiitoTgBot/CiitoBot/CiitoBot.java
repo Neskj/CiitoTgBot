@@ -1,5 +1,7 @@
 package neskj.CiitoTgBot.CiitoBot;
 
+import neskj.CiitoTgBot.ResponseInterface.ResponseInterface;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
@@ -15,6 +17,12 @@ public class CiitoBot extends TelegramLongPollingBot {
     @Value("${bot.token}")
     private String botToken;
 
+    private final ResponseInterface response;
+
+    @Autowired
+    CiitoBot(ResponseInterface response) {
+        this.response = response;
+    }
 
     @Override
     public String getBotUsername() {
@@ -31,12 +39,16 @@ public class CiitoBot extends TelegramLongPollingBot {
         if(update.hasMessage()&&update.getMessage().hasText()){
             String message=update.getMessage().getText();
             long chatId=update.getMessage().getChatId();
+            sendMessage(chatId, response.getResponse(message));
 
+/*
             if(message.equals("/start")){
-                sendMessage(chatId,"Привет, я новый бот Цеха испытаний и техобслуживания!");
+                sendMessage(chatId,"Привет! Я новый бот Цеха испытаний и техобслуживания! Чем могу помочь ?");
             } else {
                 sendMessage(chatId,"Я не понял запроса...");
             }
+
+ */
         }
     }
 
@@ -51,7 +63,7 @@ public class CiitoBot extends TelegramLongPollingBot {
         }catch (TelegramApiException e){
             System.out.println("Exeption on try to send message");
         } finally {
-            System.out.println("I send a message"+ message.getText());
+            System.out.println("I send a message: " + message.getText());
         }
     }
 }
