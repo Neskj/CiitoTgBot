@@ -53,9 +53,6 @@ public class CiitoBot extends TelegramLongPollingBot {
         } finally {
             System.out.println("I send a message"+ message.getText());
         }
-
-
     }
-
 }
 

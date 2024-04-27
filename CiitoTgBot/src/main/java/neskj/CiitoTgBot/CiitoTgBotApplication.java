@@ -10,6 +10,7 @@ public class CiitoTgBotApplication {
 
 		SpringApplication.run(CiitoTgBotApplication.class, args);
 		System.out.println("Hello im Ciito Bot !!!");
+
 	}
 
 }
