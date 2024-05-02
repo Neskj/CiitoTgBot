@@ -1,8 +1,8 @@
 package neskj.CiitoTgBot.ResponseInterface;
 
 
+import neskj.CiitoTgBot.Model.ApiResponse;
 import neskj.CiitoTgBot.Model.City;
-import neskj.CiitoTgBot.Model.Request;
 import neskj.CiitoTgBot.Proxy.Proxy;
 import neskj.CiitoTgBot.ResponseInterface.Answers.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,8 +29,8 @@ public class ResponseLogic implements ResponseInterface {
             case "/weather":
                 City city=new City();
                 city.setCity("Moscow");
-                String x=proxy.getFromApi(city);
-                return x;
+                ApiResponse response=proxy.getFromApi(city);
+                return "Согласно погодному сервису http://185.198.152.105:8086/weather, актуальная погода в Москве : "+"\n"+"\n"+response.toString();
 
             case "/vacation":
                 return new AnswerVacation().returnMessage();

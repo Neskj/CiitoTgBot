@@ -1,6 +1,6 @@
 package neskj.CiitoTgBot.Model;
 
-public class Request {
+public class ApiResponse {
 
     private String temp;
     private String feelsLike;
@@ -41,11 +41,6 @@ public class Request {
 
     @Override
     public String toString() {
-        return "Request{" +
-                "temp='" + temp + '\'' +
-                ", feelsLike='" + feelsLike + '\'' +
-                ", tempMin='" + tempMin + '\'' +
-                ", tempMax='" + tempMax + '\'' +
-                '}';
+        return "Температура : "+temp+"\n"+"Ощущается как : "+feelsLike+"\n"+"Минимум : "+tempMin+"\n"+"Максимум : "+tempMax+"\n";
     }
 }
