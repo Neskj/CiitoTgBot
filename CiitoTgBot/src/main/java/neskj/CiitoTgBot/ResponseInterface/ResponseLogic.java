@@ -1,10 +1,22 @@
 package neskj.CiitoTgBot.ResponseInterface;
 
+
+import neskj.CiitoTgBot.Model.City;
+import neskj.CiitoTgBot.Model.Request;
+import neskj.CiitoTgBot.Proxy.Proxy;
 import neskj.CiitoTgBot.ResponseInterface.Answers.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class ResponseLogic implements ResponseInterface {
+
+    private final Proxy proxy;
+
+    @Autowired
+    ResponseLogic(Proxy proxy){
+        this.proxy=proxy;
+    }
 
     public String getResponse(String message) {
 
@@ -13,8 +25,13 @@ public class ResponseLogic implements ResponseInterface {
                 return new AnswerStart().returnMessage();
             case "/drager":
                 return new AnswerDrager().returnMessage();
+                ////
             case "/weather":
-                return new AnswerWeather().returnMessage();
+                City city=new City();
+                city.setCity("Moscow");
+                String x=proxy.getFromApi(city);
+                return x;
+
             case "/vacation":
                 return new AnswerVacation().returnMessage();
             default:
