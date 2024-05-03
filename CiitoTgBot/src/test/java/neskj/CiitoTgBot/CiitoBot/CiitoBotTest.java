@@ -11,7 +11,6 @@ import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.api.objects.Update;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -35,7 +34,7 @@ public class CiitoBotTest {
 
         assertEquals("7463523662:FSBJFgTgRbR5GSRGDh42fges63g0w5CtDEj",bot.getBotToken());
     }
-/*
+
     @Test
     public void onUpdateReceivedTestHappyFlow(){
 
@@ -45,18 +44,18 @@ public class CiitoBotTest {
         Chat testChat=new Chat();
         testChat.setId(testChatId);
 
-        Message testMessage=new Message();
+        Message testMessage = new Message();
         testMessage.setChat(testChat);
         testMessage.setText(text);
 
-        Update testUpdate=new Update();
+        Update testUpdate = new Update();
         testUpdate.setMessage(testMessage);
 
         when(response.getResponse(text)).thenReturn("Привет! Я новый бот Цеха испытаний и техобслуживания! Чем могу помочь ?");
 
-        verify(response).getResponse("Привет! Я новый бот Цеха испытаний и техобслуживания! Чем могу помочь ?");
+        bot.onUpdateReceived(testUpdate);
+        verify(response).getResponse(text);
 
-
+        //как проверить, что bot корректно вызвал свой приватный метод sendMessage и отправил сообщение??
     }
-*/
 }
