@@ -13,9 +13,9 @@ import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 public class CiitoBot extends TelegramLongPollingBot {
 
     @Value("${bot.name}")
-    private String botUsername;
+    private String botUsername="testBotName";
     @Value("${bot.token}")
-    private String botToken;
+    private String botToken="7463523662:FSBJFgTgRbR5GSRGDh42fges63g0w5CtDEj";
 
     private final ResponseInterface response;
 
