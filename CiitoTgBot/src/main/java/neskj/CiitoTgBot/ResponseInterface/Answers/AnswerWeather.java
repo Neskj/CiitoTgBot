@@ -1,5 +1,6 @@
 package neskj.CiitoTgBot.ResponseInterface.Answers;
 
+@Deprecated
 public class AnswerWeather implements Answer{
 
     public String returnMessage(){
